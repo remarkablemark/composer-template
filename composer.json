@@ -1,0 +1,36 @@
+{
+    "name": "remarkablemark/composer-template",
+    "type": "library",
+    "description": "Composer template",
+    "keywords": [
+        "composer",
+        "template"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mark",
+            "email": "mark@remarkablemark.org",
+            "homepage": "https://remarkablemark.org",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Remarkablemark\\ComposerTemplate\\": "src"
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "1.23.1",
+        "friendsofphp/php-cs-fixer": "3.40.2"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "version": "1.0.0-alpha"
+}
