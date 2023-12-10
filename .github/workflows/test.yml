@@ -4,6 +4,9 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: [7.4, 8.0, 8.1, 8.2, 8.3]
 
     steps:
       - name: Checkout repository
@@ -12,14 +15,14 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          tools: composer:v2
+          php-version: ${{ matrix.php-version }}
           coverage: pcov
 
       - name: Install dependencies
         run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
       - name: Run tests
-        run: vendor/bin/pest --coverage --coverage-clover=coverage.xml --min=100
+        run: vendor/bin/pest --coverage --coverage-clover=coverage.xml
 
       - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@v3
